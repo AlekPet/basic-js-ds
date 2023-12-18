@@ -137,56 +137,20 @@ class BinarySearchTree {
   }
 
   min() {
-    return minData(this.base);
-
-    function minData(node) {
-      // if node not exist return null
-      if (!node) return null;
-
-      // if node.left and node.right not exists, return current node.data
-      if (!node.left && !node.right) {
-        return node.data;
-      }
-
-      // Find min data value
-      let findMin = node;
-      // if node.left, find min data in the branches left
-      if (node.left) {
-        while (findMin.left) findMin = findMin.left;
-      } else {
-        // if not node.left, find min data in right, branches left
-        if (node.right) {
-          while (findMin.left) findMin = findMin.left;
-        }
-      }
-
-      return findMin.data;
+    let current = this.base;
+    while (current.left) {
+      current = current.left;
     }
+    return current.data;
   }
 
   max() {
-    return maxData(this.base);
+    let current = this.base;
 
-    function maxData(node) {
-      // If node not exist return node
-      if (!node) return null;
-      // If node.left and node.right, not exists return current node.data
-      if (!node.left && !node.right) {
-        return node.data;
-      }
-
-      let findMax = node;
-      // If node.right exists, find max data in the right branhes
-      if (node.right) {
-        while (findMax.right) findMax = findMax.right;
-      } else {
-        if (node.left) {
-          // else if find in the left, right brunches
-          while (findMax.right) findMax = findMax.right;
-        }
-      }
-      return findMax.data;
+    while (current.right) {
+      current = current.right;
     }
+    return current.data;
   }
 }
 
