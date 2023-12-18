@@ -38,20 +38,18 @@ function removeKFromList(l, k) {
       let currNode = this.head,
         prevNode = null;
 
-      while (currNode.next) {
+      while (currNode) {
         if (currNode.value === value) {
-          if (currNode === this.head) {
+          if (this.head === currNode) {
             this.head = currNode.next;
           } else {
             prevNode.next = currNode.next;
-            if (currNode.next && currNode.next.value === value) {
+            if (currNode.next && currNode.next.value === value)
               currNode = prevNode;
-            }
           }
         }
         prevNode = currNode;
         currNode = currNode.next;
-        if (!currNode.next && currNode.value === value) prevNode.next = null;
       }
     }
   }
